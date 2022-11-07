@@ -76,15 +76,15 @@ flutter:
   fonts:
     - family: montserrat.bold
       fonts:
-        - asset: assets/fonts/Montserrat.bold.ttf
+        - asset: lib/assets/fonts/Montserrat-Bold.ttf
           weight: 700
-        - asset: assets/fonts/Montserrat SemiBold 600.tff
+        - asset: lib/assets/fonts/Montserrat-SemiBold.ttf
           weight: 600
-        - asset: assets/fonts/Montserrat Medium 500.tff
+        - asset: lib/assets/fonts/Montserrat-Medium.ttf
           weight: 500
-        - asset: assets/fonts/Montserrat.regular.ttf
+        - asset: lib/assets/fonts/Montserrat-Regular.ttf
           weight: 400
-        - asset: assets/fonts/Montserrat Light 300.ttf
+        - asset: lib/assets/fonts/Montserrat-Light.ttf
           weight: 300
   #
   # For details regarding fonts from package dependencies,

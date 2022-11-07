@@ -1,4 +1,6 @@
 import 'package:complete_advanced_project/presentation/color_manager.dart';
+import 'package:complete_advanced_project/presentation/font_manager.dart';
+import 'package:complete_advanced_project/presentation/styles_manager.dart';
 import 'package:complete_advanced_project/presentation/values_manager.dart';
 import 'package:flutter/material.dart';
 ThemeData getApplicationTheme(){
@@ -8,6 +10,8 @@ ThemeData getApplicationTheme(){
     primaryColorLight: ColorManager.primaryOpacity70,
     primaryColorDark: ColorManager.darkPrimary,
     disabledColor: ColorManager.grey1,
+    // ripple color
+    splashColor: ColorManager.primaryOpacity70,
     colorScheme: ColorScheme.fromSwatch().copyWith(secondary: ColorManager.grey),
 
     // card view theme
@@ -18,7 +22,16 @@ ThemeData getApplicationTheme(){
     ),
 
     // App bar theme
-
+    appBarTheme: AppBarTheme(
+      centerTitle: true,
+      color: ColorManager.primary,
+      elevation: AppSize.s4,
+      shadowColor: ColorManager.primaryOpacity70,
+      titleTextStyle: getRegularStyle(
+          color: ColorManager.white,
+          fontSize: FontSize.s16,
+      )
+    )
     // Button theme
 
     // Text theme
