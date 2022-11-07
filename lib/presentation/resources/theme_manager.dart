@@ -1,7 +1,7 @@
-import 'package:complete_advanced_project/presentation/color_manager.dart';
-import 'package:complete_advanced_project/presentation/font_manager.dart';
-import 'package:complete_advanced_project/presentation/styles_manager.dart';
-import 'package:complete_advanced_project/presentation/values_manager.dart';
+import 'package:complete_advanced_project/presentation/resources/color_manager.dart';
+import 'package:complete_advanced_project/presentation/resources/font_manager.dart';
+import 'package:complete_advanced_project/presentation/resources/styles_manager.dart';
+import 'package:complete_advanced_project/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 
 
