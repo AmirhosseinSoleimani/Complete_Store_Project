@@ -3,6 +3,8 @@ import 'package:complete_advanced_project/presentation/font_manager.dart';
 import 'package:complete_advanced_project/presentation/styles_manager.dart';
 import 'package:complete_advanced_project/presentation/values_manager.dart';
 import 'package:flutter/material.dart';
+
+
 ThemeData getApplicationTheme(){
   return ThemeData(
     // main colors of the app
