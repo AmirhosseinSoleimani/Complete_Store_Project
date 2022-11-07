@@ -31,8 +31,17 @@ ThemeData getApplicationTheme(){
           color: ColorManager.white,
           fontSize: FontSize.s16,
       )
-    )
+    ),
+
     // Button theme
+    buttonTheme: ButtonThemeData(
+      shape: const StadiumBorder(),
+      disabledColor: ColorManager.grey1,
+      buttonColor: ColorManager.primary,
+      splashColor: ColorManager.primaryOpacity70),
+      
+    // elevated button theme
+
 
     // Text theme
 
