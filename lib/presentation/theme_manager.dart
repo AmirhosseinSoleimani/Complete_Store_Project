@@ -41,7 +41,15 @@ ThemeData getApplicationTheme(){
       splashColor: ColorManager.primaryOpacity70),
       
     // elevated button theme
-
+      elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+              textStyle: getRegularStyle(color: ColorManager.white),
+              backgroundColor: ColorManager.primary,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(AppSize.s12),
+              )
+          ),
+      )
 
     // Text theme
 
