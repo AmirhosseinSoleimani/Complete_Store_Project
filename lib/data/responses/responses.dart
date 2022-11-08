@@ -13,12 +13,12 @@ class BaseResponse{
 class CustomerResponse{
   @JsonKey(name: "id")
   String? id;
-  @JsonKey(name: "message")
-  String? message;
+  @JsonKey(name: "name")
+  String? name;
   @JsonKey(name: "numOfNotification")
   int? numOfNotification;
 
-  CustomerResponse(this.id,this.message,this.numOfNotification);
+  CustomerResponse(this.id,this.name,this.numOfNotification);
 
   // from json
   factory CustomerResponse.fromJson(Map<String,dynamic> json) =>
