@@ -15,7 +15,7 @@ class OnBoardingView extends StatefulWidget {
 
 class _OnBoardingViewState extends State<OnBoardingView> {
   late final List<SliderObject> _list = _getSliderData();
-  PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
   int _currentIndex = 0;
 
   List<SliderObject> _getSliderData() => [
@@ -89,11 +89,73 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       ),
     );
   }
+
+
+Widget _getBottomSheetWidget(){
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      // left arrow
+      Padding(
+          padding: const EdgeInsets.all(AppPadding.p14),
+          child: GestureDetector(
+            onTap: (){
+              // go to next slide
+            },
+            child: SizedBox(
+              height: AppSize.s20,
+              width: AppSize.s20,
+              child: SvgPicture.asset(ImageAssets.leftArrow),
+            ),
+          ),
+      ),
+
+      // circles indicator
+      Row(
+        children: [
+          for(int i=0;i<_list.length;i++)
+            Padding(
+              padding: const EdgeInsets.all(AppPadding.p8),
+              child: _getProperCircle(i),
+            )
+
+        ],
+      ),
+
+
+      // right arrow
+      Padding(
+        padding: const EdgeInsets.all(AppPadding.p14),
+        child: GestureDetector(
+          onTap: (){
+            // go to next slide
+          },
+          child: SizedBox(
+            height: AppSize.s20,
+            width: AppSize.s20,
+            child: SvgPicture.asset(ImageAssets.leftArrow),
+          ),
+        ),
+      )
+    ],
+  );
 }
 
+  Widget _getProperCircle(int index){
+    if(index == _currentIndex){
+      return SvgPicture.asset(ImageAssets.hollowCirce); // selected slider
+    }else{
+      return SvgPicture.asset(ImageAssets.solidCircle); // unSelected slider
+    }
+  }
+
+}
+
+
+
 class OnBoardingPage extends StatelessWidget{
-  SliderObject _sliderObject;
-  OnBoardingPage(this._sliderObject,{Key? key}) : super(key: key);
+  final SliderObject _sliderObject;
+  const OnBoardingPage(this._sliderObject,{Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context){
     return Column(

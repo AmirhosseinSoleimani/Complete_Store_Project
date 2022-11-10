@@ -72,6 +72,10 @@ flutter:
     - lib/assets/images/onboarding_logo2.svg
     - lib/assets/images/onboarding_logo3.svg
     - lib/assets/images/onboarding_logo4.svg
+    - lib/assets/images/hollow_cirlce_ic.svg
+    - lib/assets/images/left_arrow_ic.svg
+    - lib/assets/images/right_arrow_ic.svg
+    - lib/assets/images/solid_circle_ic.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
