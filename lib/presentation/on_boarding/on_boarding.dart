@@ -14,32 +14,11 @@ class OnBoardingView extends StatefulWidget {
 }
 
 class _OnBoardingViewState extends State<OnBoardingView> {
-  late final List<SliderObject> _list = _getSliderData();
-  final PageController _pageController = PageController(initialPage: 0);
-  int _currentIndex = 0;
 
-  List<SliderObject> _getSliderData() => [
-    SliderObject(
-        AppString.onBoardingSubTitle1,
-        AppString.onBoardingTitle1,
-        ImageAssets.onBoardingLogo1,
-    ),
-    SliderObject(
-      AppString.onBoardingSubTitle2,
-      AppString.onBoardingTitle2,
-      ImageAssets.onBoardingLogo2,
-    ),
-    SliderObject(
-      AppString.onBoardingSubTitle3,
-      AppString.onBoardingTitle3,
-      ImageAssets.onBoardingLogo3,
-    ),
-    SliderObject(
-      AppString.onBoardingSubTitle4,
-      AppString.onBoardingTitle4,
-      ImageAssets.onBoardingLogo4,
-    )
-  ];
+  final PageController _pageController = PageController(initialPage: 0);
+
+
+
 
 
   @override
@@ -178,6 +157,12 @@ Widget _getBottomSheetWidget(){
     }else{
       return SvgPicture.asset(ImageAssets.solidCircle); // unSelected slider
     }
+  }
+
+  @override
+  void dispose() {
+    // TODO: vewModel.dispose();
+    super.dispose();
   }
 
 }

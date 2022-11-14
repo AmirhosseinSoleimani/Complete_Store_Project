@@ -1,24 +1,28 @@
-
 import 'dart:async';
-
 import 'package:complete_advanced_project/presentation/base/base_viewModel.dart';
-
 import '../../domain/model.dart';
+import '../resources/assets_manager.dart';
+import '../resources/string_manager.dart';
 
 class OnBoardingViewModel extends BaseViewModel with OnBoardingViewModelInputs,OnBoardingViewModelOutputs{
   // stream controllers
   final StreamController _streamController = StreamController<SlideViewObject>();
 
+  late final List<SliderObject> _list;
+
+  int _currentIndex = 0;
 
   // inputs
   @override
   void dispose() {
-    // TODO: implement dispose
+    _streamController.close();
   }
 
   @override
   void start() {
-    // TODO: implement start
+    _list = _getSliderData();
+    // send this slider data to our view
+    _postDataToView();
   }
 
   @override
@@ -36,6 +40,46 @@ class OnBoardingViewModel extends BaseViewModel with OnBoardingViewModelInputs,O
     // TODO: implement onPageChange
   }
 
+  @override
+  Sink get inputSliderViewObject => _streamController.sink;
+
+  @override
+  Stream<SlideViewObject> get outputSliderViewObject =>
+      _streamController.stream.map((slideViewObject) => slideViewObject);
+
+  // private functions
+  List<SliderObject> _getSliderData() => [
+    SliderObject(
+      AppString.onBoardingSubTitle1,
+      AppString.onBoardingTitle1,
+      ImageAssets.onBoardingLogo1,
+    ),
+    SliderObject(
+      AppString.onBoardingSubTitle2,
+      AppString.onBoardingTitle2,
+      ImageAssets.onBoardingLogo2,
+    ),
+    SliderObject(
+      AppString.onBoardingSubTitle3,
+      AppString.onBoardingTitle3,
+      ImageAssets.onBoardingLogo3,
+    ),
+    SliderObject(
+      AppString.onBoardingSubTitle4,
+      AppString.onBoardingTitle4,
+      ImageAssets.onBoardingLogo4,
+    )
+  ];
+
+  _postDataToView(){
+    inputSliderViewObject.add(
+        SlideViewObject(
+            _list[_currentIndex],
+            _list.length,
+            _currentIndex,
+        ),
+    );
+  }
 }
 
 // inputs mean the orders that out view model will receive from our view
