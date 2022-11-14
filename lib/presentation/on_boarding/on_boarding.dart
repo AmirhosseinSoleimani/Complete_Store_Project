@@ -182,8 +182,6 @@ Widget _getBottomSheetWidget(){
 
 }
 
-
-
 class OnBoardingPage extends StatelessWidget{
   final SliderObject _sliderObject;
   const OnBoardingPage(this._sliderObject,{Key? key}) : super(key: key);
