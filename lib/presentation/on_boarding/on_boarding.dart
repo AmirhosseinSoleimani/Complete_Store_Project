@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../domain/model.dart';
+
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({Key? key}) : super(key: key);
 
@@ -14,9 +16,16 @@ class OnBoardingView extends StatefulWidget {
 }
 
 class _OnBoardingViewState extends State<OnBoardingView> {
+  late final List<SliderObject> _list = _getSliderDate();
 
   final PageController _pageController = PageController(initialPage: 0);
-
+  int _currentIndex = 0;
+  List<SliderObject> _getSliderDate() => [
+    SliderObject(AppString.onBoardingSubTitle1, AppString.onBoardingSubTitle1, ImageAssets.onBoardingLogo1),
+    SliderObject(AppString.onBoardingSubTitle2, AppString.onBoardingSubTitle2, ImageAssets.onBoardingLogo2),
+    SliderObject(AppString.onBoardingSubTitle3, AppString.onBoardingSubTitle3, ImageAssets.onBoardingLogo3),
+    SliderObject(AppString.onBoardingSubTitle4, AppString.onBoardingSubTitle4, ImageAssets.onBoardingLogo4),
+  ];
 
 
 
