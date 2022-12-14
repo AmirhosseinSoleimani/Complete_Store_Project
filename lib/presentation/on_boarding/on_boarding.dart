@@ -16,18 +16,8 @@ class OnBoardingView extends StatefulWidget {
 }
 
 class _OnBoardingViewState extends State<OnBoardingView> {
-  late final List<SliderObject> _list = _getSliderDate();
 
   final PageController _pageController = PageController(initialPage: 0);
-  int _currentIndex = 0;
-  List<SliderObject> _getSliderDate() => [
-    SliderObject(AppString.onBoardingSubTitle1, AppString.onBoardingSubTitle1, ImageAssets.onBoardingLogo1),
-    SliderObject(AppString.onBoardingSubTitle2, AppString.onBoardingSubTitle2, ImageAssets.onBoardingLogo2),
-    SliderObject(AppString.onBoardingSubTitle3, AppString.onBoardingSubTitle3, ImageAssets.onBoardingLogo3),
-    SliderObject(AppString.onBoardingSubTitle4, AppString.onBoardingSubTitle4, ImageAssets.onBoardingLogo4),
-  ];
-
-
 
 
   @override

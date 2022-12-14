@@ -27,17 +27,27 @@ class OnBoardingViewModel extends BaseViewModel with OnBoardingViewModelInputs,O
 
   @override
   void goNext() {
-    // TODO: implement goNext
+    int nextIndex = _currentIndex ++; // +1
+    if(nextIndex == _list.length){
+      _currentIndex = 0; // infinite loop to go to the first item inside the slider
+    }
+    _postDataToView();
   }
 
   @override
   void goPrevious() {
-    // TODO: implement goPrevious
+    int previousIndex = _currentIndex --; // -1
+    if(previousIndex == -1){
+      _currentIndex = _list.length -1; // infinite loop to go to the length of slider list
+    }
+    _postDataToView();
   }
 
   @override
   void onPageChange(int index) {
-    // TODO: implement onPageChange
+   _currentIndex = index;
+   _postDataToView();
+
   }
 
   @override
@@ -94,7 +104,6 @@ abstract class OnBoardingViewModelInputs{
 // outputs mean data or results that will be sent from our view model to our view
 abstract class OnBoardingViewModelOutputs{
   Stream<SlideViewObject> get outputSliderViewObject;
-
 }
 
 class SlideViewObject{
