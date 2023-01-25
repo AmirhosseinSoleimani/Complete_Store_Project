@@ -20,8 +20,8 @@ class OnBoardingViewModel extends BaseViewModel with OnBoardingViewModelInputs,O
 
   @override
   void start() {
-    _list = _getSliderData();
     // send this slider data to our view
+    _list = _getSliderData();
     _postDataToView();
   }
 

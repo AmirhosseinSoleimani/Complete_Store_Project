@@ -1,7 +1,6 @@
 import 'package:complete_advanced_project/app/constant.dart';
 import 'package:retrofit/http.dart';
 import 'package:dio/dio.dart';
-
 import '../responses/responses.dart';
 part 'app_api.g.dart';
 
