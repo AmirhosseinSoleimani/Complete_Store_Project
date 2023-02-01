@@ -1,4 +1,5 @@
 import 'package:complete_advanced_project/data/mapper/mapper.dart';
+import 'package:complete_advanced_project/data/network/error_handler.dart';
 import 'package:complete_advanced_project/data/network/failure.dart';
 import 'package:complete_advanced_project/data/request/request.dart';
 import 'package:complete_advanced_project/domain/model.dart';
@@ -15,21 +16,26 @@ class RepositoryImpl extends Repository{
   @override
   Future<Either<Failure, Authentication>> login(LoginRequest loginRequest) async{
     if(await _networkInfo.isConnected){
-      // Its safe to call the API
-      final response = await _remoteDataSource.login(loginRequest);
-      if(response.baseResponsesStatus == 0) // Success
-      {
-        // return data(success)
-        // return right
-        return Right(response.toDomain());
-      }else{
-        // return business logic error
-        // return left
-        return Left(Failure(409,response.message ?? 'we have business error logic from API side'));
+      try{
+        // Its safe to call the API
+        final response = await _remoteDataSource.login(loginRequest);
+        if(response.baseResponsesStatus == ApiInternalStatus.success) // Success
+            {
+          // return data(success)
+          // return right
+          return Right(response.toDomain());
+        }else{
+          // return business logic error
+          // return left
+          return Left(Failure(response.baseResponsesStatus ?? ApiInternalStatus.failure,
+              response.message ?? ResponseMessage.defaultError));
+        }
+      }catch(error){
+        return(Left( ErrorHandler.handle(error).failure));
       }
     }else{
       // return connection error
-      return Left(Failure(501,'Please check your internet connection'));
+      return Left(DataSource.noInternetConnection.getFailure());
 
     }
 
