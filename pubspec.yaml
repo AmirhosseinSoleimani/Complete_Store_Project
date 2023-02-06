@@ -43,6 +43,7 @@ dependencies:
   dartz: ^0.10.1
   data_connection_checker: ^0.3.4
   pretty_dio_logger: ^1.1.1
+  shared_preferences: ^2.0.17
 
 dev_dependencies:
   flutter_test:
