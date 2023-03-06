@@ -1,6 +1,6 @@
-import '../data/network/failure.dart';
-import '../data/request/request.dart';
-import 'model.dart';
+import '../../data/network/failure.dart';
+import '../../data/request/request.dart';
+import '../model/model.dart';
 import 'package:dartz/dartz.dart';
 
 
