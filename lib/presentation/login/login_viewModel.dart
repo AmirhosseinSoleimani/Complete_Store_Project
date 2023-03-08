@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:complete_advanced_project/domain/useCase/login_useCase.dart';
 import 'package:complete_advanced_project/presentation/base/base_viewModel.dart';
 import '../common/freezed_data_classes.dart';
 
@@ -10,6 +11,8 @@ class LoginViewModel extends BaseViewModel
   final StreamController _passwordStreamController = StreamController<String>.broadcast();
 
   var loginObject = LoginObject("","");
+  LoginUseCase _loginUseCase;
+  LoginViewModel(this._loginUseCase);
 
   // Input
   @override
@@ -30,9 +33,16 @@ class LoginViewModel extends BaseViewModel
   Sink get inputUserName => _userNameStreamController.sink;
 
   @override
-  login() {
-    // TODO: implement login
-    throw UnimplementedError();
+  login() async{
+    (await _loginUseCase.execute(LoginUseCaseInput(
+        loginObject.userName, loginObject.password))).fold((
+        failure) => {
+          // left -> failure
+      print(failure.message)
+    }, (data) => {
+          // right -> success(data)
+          print(data.customer?.name)
+    });
   }
 
 
