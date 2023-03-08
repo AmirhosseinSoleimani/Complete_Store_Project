@@ -4,10 +4,12 @@ import 'package:complete_advanced_project/data/network/app_api.dart';
 import 'package:complete_advanced_project/data/network/dio_factory.dart';
 import 'package:complete_advanced_project/data/network/network_info.dart';
 import 'package:complete_advanced_project/domain/repository/repository.dart';
+import 'package:complete_advanced_project/presentation/login/login_viewModel.dart';
 import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/repository/repository_impl.dart';
+import '../domain/useCase/login_useCase.dart';
 
 final instance = GetIt.instance;
 
@@ -42,4 +44,15 @@ Future<void> initAppModule() async{
   // repository
   instance.registerLazySingleton<Repository>(
           () => RepositoryImpl(instance(), instance()));
+
+  initLoginModule();
+}
+
+initLoginModule(){
+  if(!GetIt.I.isRegistered<LoginUseCase>()) {
+    instance.registerFactory<LoginUseCase>(
+            () => LoginUseCase(instance()));
+    instance.registerFactory<LoginViewModel>(
+            () => LoginViewModel(instance()));
+  }
 }
