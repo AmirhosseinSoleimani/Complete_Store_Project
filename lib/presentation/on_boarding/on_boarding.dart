@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../domain/model/model.dart';
+import '../resources/routes_manager.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({Key? key}) : super(key: key);
@@ -78,7 +79,9 @@ Widget _getContentWidget(SlideViewObject? slideViewObject){
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.pushReplacementNamed(context,Routes.loginRoute);
+                  },
                   child: Text(
                     AppString.skip,
                     style: Theme.of(context).textTheme.subtitle2,

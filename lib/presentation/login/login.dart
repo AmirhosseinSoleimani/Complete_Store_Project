@@ -3,7 +3,6 @@ import 'package:complete_advanced_project/presentation/resources/assets_manager.
 import 'package:complete_advanced_project/presentation/resources/color_manager.dart';
 import 'package:complete_advanced_project/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../resources/string_manager.dart';
 
 class LoginView extends StatefulWidget {
@@ -40,7 +39,7 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return _getContentWidget();
   }
 
   Widget _getContentWidget(){
@@ -53,8 +52,8 @@ class _LoginViewState extends State<LoginView> {
             key: _formKey,
             child: Column(
               children: [
-                SizedBox(
-                  child: SvgPicture.asset(ImageAssets.splashLogo),
+                const Image(
+                  image: AssetImage(ImageAssets.splashLogo),
                 ),
                 const SizedBox(
                   height: AppSize.s28,
@@ -76,6 +75,9 @@ class _LoginViewState extends State<LoginView> {
                       );
                     },
                   ),
+                ),
+                const SizedBox(
+                  height: AppSize.s28,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
