@@ -4,6 +4,7 @@ import 'package:complete_advanced_project/presentation/resources/color_manager.d
 import 'package:complete_advanced_project/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../resources/string_manager.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -67,6 +68,29 @@ class _LoginViewState extends State<LoginView> {
                       return TextFormField(
                        keyboardType: TextInputType.emailAddress,
                        controller: _userNameController,
+                        decoration: InputDecoration(
+                          hintText: AppString.userName,
+                          label: const Text(AppString.userName),
+                          errorText: (snapshot.data ?? true) ? null : AppString.userNameError,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: AppPadding.p28,right: AppPadding.p28),
+                  child: StreamBuilder<bool>(
+                    stream: _loginViewModel.outputIsPasswordValid,
+                    builder: (context,snapshot){
+                      return TextFormField(
+                        keyboardType: TextInputType.visiblePassword,
+                        controller: _passwordController,
+                        decoration: InputDecoration(
+                          hintText: AppString.password,
+                          label: const Text(AppString.password),
+                          errorText: (snapshot.data ?? true) ? null : AppString.passwordError,
+                        ),
                       );
                     },
                   ),
