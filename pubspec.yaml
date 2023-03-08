@@ -46,6 +46,7 @@ dependencies:
   shared_preferences: ^2.0.17
   device_info_plus: ^8.1.0
   freezed: ^2.3.2
+  # flutter pub run build_runner build --delete-conflicting-outputs
 
 dev_dependencies:
   flutter_test:
