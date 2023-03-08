@@ -39,11 +39,15 @@ class LoginViewModel extends BaseViewModel
   @override
   setPassword(String password) {
     inputPassword.add(password);
+    // data class operation same as kotlin
+    loginObject = loginObject.copyWith(password: password);
   }
 
   @override
   setUserName(String userName) {
     inputUserName.add(userName);
+    // data class operation same as kotlin
+    loginObject = loginObject.copyWith(userName: userName);
   }
 
   // Output
