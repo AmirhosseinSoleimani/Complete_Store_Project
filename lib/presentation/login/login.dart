@@ -1,5 +1,9 @@
 import 'package:complete_advanced_project/presentation/login/login_viewModel.dart';
+import 'package:complete_advanced_project/presentation/resources/assets_manager.dart';
+import 'package:complete_advanced_project/presentation/resources/color_manager.dart';
+import 'package:complete_advanced_project/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -13,6 +17,7 @@ class _LoginViewState extends State<LoginView> {
 
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   _bind(){
     _loginViewModel.start();
@@ -35,5 +40,42 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Container();
+  }
+
+  Widget _getContentWidget(){
+    return Scaffold(
+      body: Container(
+        padding: const EdgeInsets.only(top: AppPadding.p100),
+        color: ColorManager.white,
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                SizedBox(
+                  child: SvgPicture.asset(ImageAssets.splashLogo),
+                ),
+                const SizedBox(
+                  height: AppSize.s28,
+                ),
+                Padding(
+                    padding: const EdgeInsets.only(
+                        left: AppPadding.p28,right: AppPadding.p28),
+                  child: StreamBuilder<bool>(
+                    stream: _loginViewModel.outputIsUserNameValid,
+                    builder: (context,snapshot){
+                      return TextFormField(
+                       keyboardType: TextInputType.emailAddress,
+                       controller: _userNameController,
+                      );
+                    },
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
